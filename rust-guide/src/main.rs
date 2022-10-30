@@ -1,6 +1,6 @@
 fn main() {
     data_types();
-    loops();
+    loop_kinds();
 }
 
 fn data_types() {
@@ -43,7 +43,7 @@ fn data_types() {
 
 }
 
-fn loops() {
+fn loop_kinds() {
 
 // Loop
     
@@ -94,10 +94,25 @@ fn basic_ownership() {
 // Data interactions
     
     // Move
-    //Data can be cloned if they are simple types with fixed sizes such as ints
+    // Data can be cloned if they are simple types with fixed sizes such as ints
     let x = 5;
     let y = x;
     let z =x;
 
+    // But moving something like a string is a little more complicated, given that its dynamic nature
+    let first_name: String = String::from("Nich");
+    let copied_name: String = first_name; // first_name is dropped as the ownership of the value in first_name is transfered to copied_name
+
+    // We would not be able to do another assignment from first_name like we did with the ints, because first_name doesn't exist now
+    // copied_name now exists with the previous value of first_name
+
+    //Clone
+    // This is an example of a deep copy, aka cloning. If I simply want to fully copy the contents of str1 and put it in str2, I can use clone
+    let str1: String = String::from("Hello");
+    let str2:String = str1.clone();
+
+    println!("We can now use both str1({}), and str2({})", str1, str2)
+
+// 
 
 }
